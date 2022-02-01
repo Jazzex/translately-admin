@@ -1,0 +1,15 @@
+<nb-card>
+  <nb-card-header>Delete a Page</nb-card-header>
+  <nb-card-body>
+    <nb-select placeholder="Select Page" [(selected)]="selectedPageId">
+      <!-- <nb-option [value]="0">Pages</nb-option> -->
+      <nb-option *ngFor="let page of appPages" [value]="page.id">{{
+        page.name
+      }}</nb-option>
+    </nb-select>
+  </nb-card-body>
+  <nb-card-footer class="dialog-footer">
+    <button nbButton outline size="small" status="danger" (click)="close()">Close</button>
+    <button nbButton outline size="small" status="success" (click)="deletePage()">Delete Page</button>
+  </nb-card-footer>
+</nb-card>

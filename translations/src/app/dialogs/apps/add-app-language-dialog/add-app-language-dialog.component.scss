@@ -1,0 +1,13 @@
+.app-dialog {
+    width: 400px;
+  }
+
+.dialog-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.close-button {
+    margin-right: 100px;
+}

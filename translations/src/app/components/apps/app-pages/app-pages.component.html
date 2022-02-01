@@ -1,0 +1,89 @@
+<div class="app-page-header">
+  <h2>{{ app?.name }} Pages</h2>
+  <div class="buttons">
+    <nb-select placeholder="Select Language to Edit" [(selected)]="selectedLanguageId">
+      <nb-option *ngFor="let lang of appLanguages" [value]="lang.id">{{
+        lang.language
+      }}</nb-option>
+    </nb-select>
+    <button nbButton outline status="success" size="medium" (click)="addPageDialog()">ADD PAGE</button>
+    <button nbButton outline status="danger" size="medium" (click)="removePageDialog()">REMOVE PAGE</button>
+    <button nbButton outline status="primary" size="medium" (click)="save()">
+      UPDATE
+    </button>
+    <button nbButton outline status="primary" size="medium" (click)="addAppLanguage()">
+      ADD LANGUAGE
+    </button>
+  </div>
+</div>
+
+<nb-accordion multi="true">
+  <nb-accordion-item *ngFor="let appPage of app?.appPages" expanded="true">
+    <nb-accordion-item-header>
+      <div>
+        {{ appPage.name | uppercase }}
+      </div>
+    </nb-accordion-item-header>
+
+    <nb-accordion-item-body>
+      <div *ngFor="let lang of appLanguages">
+        <p *ngIf="!selectedLanguageId">{{ lang.language }}</p>
+        <div
+          *ngFor="let item of filterItems(appPage.translationItems, lang)"
+          class="items"
+        >
+          <div>
+            <input
+              class="item-input"
+              type="text"
+              status="{{ item.status ? item.status : 'success' }}"
+              nbInput
+              placeholder="Key"
+              (ngModelChange)="
+                onChangeInput($event, appPage.id, item, 'itemKey')
+              "
+              [(ngModel)]="
+                app?.appPagesObj[appPage.id].itemsObj[item.id].itemKey
+              "
+            />
+            <input
+              class="item-input"
+              type="text"
+              status="{{ item.status ? item.status : 'success' }}"
+              nbInput
+              placeholder="Value"
+              (ngModelChange)="
+                onChangeInput($event, appPage.id, item, 'itemValue')
+              "
+              [(ngModel)]="
+                app?.appPagesObj[appPage.id].itemsObj[item.id].itemValue
+              "
+            />
+          </div>
+          <div class="pageButton">
+            <button
+              nbButton
+              outline
+              status="danger"
+              size="small"
+              (click)="removeItem($event, appPage, item)"
+            >
+              <nb-icon icon="trash"></nb-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="pageButton" *ngIf="selectedLanguageId">
+        <button
+          nbButton
+          outline
+          status="primary"
+          size="medium"
+          (click)="addItem($event, appPage)"
+        >
+          ADD ITEM
+        </button>
+      </div>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>

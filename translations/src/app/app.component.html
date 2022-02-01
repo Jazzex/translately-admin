@@ -1,0 +1,18 @@
+<nb-layout>
+
+  <nb-layout-header fixed class="header">
+    <button nbButton status="success" size="medium" (click)="toggle()">              
+      <nb-icon icon="menu-2"></nb-icon>
+    </button>
+    <h1 class="title">Translate.ly</h1>
+  </nb-layout-header>
+  <nb-sidebar state="compacted">
+    <nb-menu [items]="items">
+    </nb-menu>
+  </nb-sidebar>
+  <nb-layout-column>   
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+
+
+</nb-layout>

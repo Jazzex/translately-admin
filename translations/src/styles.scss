@@ -1,0 +1,30 @@
+@import 'themes';
+
+@import '~@nebular/theme/styles/globals';
+
+@include nb-install() {
+  @include nb-theme-global();
+};
+/* You can add global styles to this file, and also import other style files */
+
+.app-dialog {
+  width: 400px;
+}
+
+.dialog-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  :first-child {
+    margin-right: 100px;
+  }
+}
+
+.menu-item a .menu-title {
+  font-size: x-large;
+}
+
+.menu-icon {
+  font-size: 1.5rem;
+}

@@ -1,0 +1,15 @@
+<nb-card>
+  <nb-card-header>Add a Page</nb-card-header>
+  <nb-card-body>
+    <input
+      type="text"
+      nbInput
+      placeholder="Key"
+      [(ngModel)]="pageName"
+    />
+  </nb-card-body>
+  <nb-card-footer class="dialog-footer">
+    <button nbButton outline size="small" status="danger" class="close-button" (click)="close()">Close</button>
+    <button nbButton outline size="small" status="success" (click)="add()">Add Page</button>
+  </nb-card-footer>
+</nb-card>

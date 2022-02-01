@@ -1,0 +1,16 @@
+
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.title {
+    margin-left: 25px;
+}
+
+.menu-item a .menu-title {
+    font-size: x-large;
+}
+::ng-deep.menu-item {
+    font-size: x-large;
+}
