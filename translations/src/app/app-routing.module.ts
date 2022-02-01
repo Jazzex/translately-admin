@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { LanguagesComponent } from './pages/languages/languages.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'apps' },
   { path: 'apps', component: AppsComponent},
   { path: 'apps/:id', component: AppPagesComponent},
   { path: 'languages', component: LanguagesComponent}
